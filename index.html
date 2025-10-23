@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNAERP Incoming Student Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>UNAERP – Incoming Student Mobility Form<br>Formulário de Mobilidade Alunos Internacionais</h1>
+
+    <form id="mobilityForm" enctype="multipart/form-data">
+      <!-- Section 1 – Introduction -->
+      <section>
+        <h2>Welcome! / Boas-vindas!</h2>
+        <p>
+          Dear International Student: we appreciate your interest in studying at Unaerp (Ribeirão Preto, Brazil).<br>
+          Por favor, leia o Manual de Candidatura antes de preencher este formulário.<br><br>
+          If you have any questions, contact: 
+          <a href="mailto:intercambio@unaerp.br">intercambio@unaerp.br</a>
+        </p>
+      </section>
+
+      <!-- Section 2 – Personal Information -->
+      <section>
+        <h2>Personal Information / Informações Pessoais</h2>
+
+        <label>Full Name / Nome Completo</label>
+        <input type="text" name="fullName" required>
+
+        <label>Passport Number / Número do Passaporte</label>
+        <input type="text" name="passportNumber" required>
+
+        <label>Phone Number / Telefone</label>
+        <input type="text" name="phone" required>
+
+        <label>Mother’s Name / Nome da Mãe</label>
+        <input type="text" name="motherName" required>
+
+        <label>Father’s Name / Nome do Pai</label>
+        <input type="text" name="fatherName" required>
+
+        <label>Date of Birth / Data de Nascimento</label>
+        <input type="date" name="dob" required>
+
+        <label>Gender / Gênero</label>
+        <select name="gender" required>
+          <option value="">Select / Selecione</option>
+          <option>Female / Feminino</option>
+          <option>Male / Masculino</option>
+          <option>Non-Binary / Não-Binário</option>
+          <option>Prefer not to say / Prefiro não informar</option>
+          <option>Other / Outro</option>
+        </select>
+
+        <label>Nationality / Nacionalidade</label>
+        <input type="text" name="nationality" required>
+
+        <label>Country / País</label>
+        <input type="text" name="country" placeholder="e.g. França  / France " required>
+
+        <label>State / Province / Estado / Província</label>
+        <input type="text" name="state">
+
+        <label>City / Cidade</label>
+        <input type="text" name="city" required>
+
+        <label>Address / Endereço Residencial</label>
+        <input type="text" name="address" required>
+
+        <label>ZIP / Código Postal</label>
+        <input type="text" name="zip" required>
+
+        <label>Disability or medical condition / Deficiência ou condição médica</label>
+        <textarea name="disability"></textarea>
+      </section>
+
+      <!-- Section 3 – Academic Information -->
+      <section>
+        <h2>Academic Information / Informações Acadêmicas</h2>
+
+        <label>Home Institution / Instituição de Origem</label>
+        <input type="text" name="institution" required>
+
+        <label>Program of Study / Programa de Estudos</label>
+        <input type="text" name="program" required>
+
+        <label>Starting Year / Ano de Início</label>
+        <input type="number" name="startYear" required>
+
+        <label>Year of Conclusion / Ano de Conclusão</label>
+        <input type="number" name="endYear" required>
+
+        <label>Current Stage / Ano ou Semestre Atual</label>
+        <input type="text" name="stage" required>
+      </section>
+
+      <!-- Section 4 – Language Skills -->
+      <section>
+        <h2>Language Skills / Habilidades Linguísticas</h2>
+
+        <label>Portuguese level / Nível de Português</label>
+        <select name="portuguese" required>
+          <option value="">Select / Selecione</option>
+          <option>Basic / Básico</option>
+          <option>Intermediate / Intermediário</option>
+          <option>Advanced / Avançado</option>
+          <option>Fluent / Fluente</option>
+        </select>
+
+        <label>English level / Nível de Inglês</label>
+        <select name="english" required>
+          <option value="">Select / Selecione</option>
+          <option>Basic User (A1-A2)</option>
+          <option>Independent User (B1)</option>
+          <option>Independent User (B2)</option>
+          <option>Proficient User (C1)</option>
+          <option>Proficient User (C2)</option>
+          <option>Fluent / Fluente</option>
+        </select>
+
+        <label>Spanish level / Nível de Espanhol</label>
+        <select name="spanish" required>
+          <option value="">Select / Selecione</option>
+          <option>Basic User (A1-A2)</option>
+          <option>Independent User (B1)</option>
+          <option>Independent User (B2)</option>
+          <option>Proficient User (C1)</option>
+          <option>Proficient User (C2)</option>
+          <option>Fluent / Fluente</option>
+        </select>
+      </section>
+
+      <!-- Section 5 – Study at UNAERP -->
+      <section>
+        <h2>Study at UNAERP / Estudo na UNAERP</h2>
+
+        <label>Study Period / Período de Estudo</label>
+        <select id="period" name="period" required>
+          <option value="">Select / Selecione</option>
+          <option>2026-1 (Feb–Jun)</option>
+          <option>2026-2 (Aug–Dec)</option>
+          <option>2027-1 (Feb–Jun)</option>
+          <option>Other / Outro</option>
+        </select>
+
+        <div id="otherPeriodField" class="hidden">
+          <label>Specify Other Period / Especifique Outro Período</label>
+          <input type="text" name="otherPeriod">
+        </div>
+
+        <label>Campus</label>
+        <select name="campus" required>
+          <option>Ribeirão Preto</option>
+             <option>Guarujá (Please note that our main Campus is Ribeirão Preto)</option>
+        </select>
+
+        <label>Course of Interest / Curso de Interesse</label>
+        <select id="courseSelect" name="course" required>
+          <option value="">Select / Selecione</option>
+          <option>Architecture and Urbanism / Arquitetura e Urbanismo</option>
+          <option>Business / Administração</option>
+          <option>Chemical Engineering / Engenharia Química</option>
+          <option>Civil Engineering / Engenharia Civil</option>
+          <option>Computer Engineering / Engenharia da Computação</option>
+          <option>Dentistry / Odontologia</option>
+          <option>International Relations / Relações Internacionais</option>
+          <option>Journalism / Jornalismo</option>
+          <option>Law / Direito</option>
+          <option>Medicine / Medicina</option>
+          <option>Nursing / Enfermagem</option>
+          <option>Nutrition / Nutrição</option>
+          <option>Pharmaceutical Sciences / Ciências Farmacêuticas</option>
+          <option>Physical Education / Educação Física</option>
+          <option>Physiotherapy / Fisioterapia</option>
+          <option>Psychology / Psicologia</option>
+          <option>Publicity and Advertising / Publicidade e Propaganda</option>
+          <option>Software Engineering / Engenharia de Software</option>
+          <option>Other / Outro</option>
+        </select>
+
+        <div id="otherCourseField" class="hidden">
+          <label>Specify Other Course / Especifique Outro Curso</label>
+          <input type="text" name="otherCourse">
+        </div>
+
+        <label>If applying for internship, research, etc. / Se aplicando para estágio, pesquisa, etc.</label>
+        <textarea name="exchangeType"></textarea>
+      </section>
+
+      <!-- Section 6 – Required Documents -->
+      <section>
+        <h2>Required Documents / Documentos Necessários</h2>
+        <label>Academic Transcript (PDF)</label>
+        <input type="file" id="academicTranscript" name="academicTranscript" accept=".pdf" required>
+
+        <label>Curriculum Vitae (PDF)</label>
+        <input type="file" id="cv" name="cv" accept=".pdf" required>
+
+        <label>Motivation Letter (PDF)</label>
+        <input type="file" id="motivationLetter" name="motivationLetter" accept=".pdf" required>
+
+        <label>Recommendation Letter from a Professor (PDF)</label>
+        <input type="file" id="recommendationLetter" name="recommendationLetter" accept=".pdf,.doc,.docx" required>
+
+        <label>Passport Copy (PDF)</label>
+        <input type="file" id="passportCopy" name="passportCopy" accept=".pdf" required>
+      </section>
+
+      <!-- Section 7 – Agreements -->
+      <section>
+        <h2>Agreements / Termos</h2>
+        <label><input type="checkbox" required> I am aware of governmental/public health restrictions.<br>Estou ciente das restrições governamentais e de saúde pública.</label>
+        <label><input type="checkbox" required> I am aware that courses are taught in Portuguese.<br>Estou ciente de que as disciplinas são ministradas em português.</label>
+        <label><input type="checkbox" required> I confirm all information is accurate and authorize data processing.<br>Confirmo que as informações estão corretas e autorizo o tratamento dos dados.</label>
+      </section>
+
+      <!-- Section 8 – Comments -->
+      <section>
+        <h2>Additional Comments / Comentários Adicionais</h2>
+        <textarea name="comments"></textarea>
+      </section>
+
+      <button type="submit">Enviar / Submit</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
