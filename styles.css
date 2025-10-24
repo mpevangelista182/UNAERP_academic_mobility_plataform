@@ -1,7 +1,6 @@
-/* General Page Layout */
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom right, #b3e0ff, #99ccff); /* Azure blue gradient */
+  background: linear-gradient(to bottom right, #b3e0ff, #99ccff);
   margin: 0;
   display: flex;
   justify-content: center;
@@ -9,10 +8,8 @@ body {
   min-height: 100vh;
   padding: 20px;
 }
-
-/* Form Container */
 .container {
-  background: #ffffff; /* White form background */
+  background: #ffffff;
   padding: 40px;
   margin: 40px 20px;
   border-radius: 12px;
@@ -20,40 +17,25 @@ body {
   width: 100%;
   max-width: 800px;
 }
-
-/* Title */
 h1 {
   text-align: center;
   color: #003366;
   margin-bottom: 30px;
 }
-
-/* Section styling */
-section {
-  margin-bottom: 40px;
-}
-
+section { margin-bottom: 40px; }
 h2 {
   color: #004999;
   border-bottom: 2px solid #004999;
   padding-bottom: 5px;
   margin-bottom: 15px;
 }
-
-/* Labels and inputs */
 label {
   display: block;
   font-weight: bold;
   margin-top: 15px;
   color: #222;
 }
-
-input[type="text"],
-input[type="email"],
-input[type="date"],
-input[type="number"],
-select,
-textarea {
+input, select, textarea {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
@@ -62,17 +44,10 @@ textarea {
   font-size: 1em;
   box-sizing: border-box;
 }
-
 textarea {
   resize: vertical;
   height: 100px;
 }
-
-input[type="file"] {
-  margin-top: 5px;
-}
-
-/* Submit button */
 button {
   display: block;
   width: 100%;
@@ -85,21 +60,10 @@ button {
   cursor: pointer;
   transition: 0.3s ease;
 }
-
 button:hover {
   background-color: #004999;
 }
-
-/* Utility classes */
-.hidden {
-  display: none;
-}
-
-/* Responsive Design */
+.hidden { display: none; }
 @media (max-width: 600px) {
-  .container {
-    margin: 20px;
-    padding: 25px;
-  }
+  .container { margin: 20px; padding: 25px; }
 }
-
