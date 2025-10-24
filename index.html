@@ -8,9 +8,9 @@
 </head>
 <body>
   <div class="container">
-    <!-- Cabeçalho com logo e título -->
+    <!-- Header with logo and title -->
     <header class="page-header">
-      <img src="./imgs/unaerp-logo.png" alt="UNAERP Logo" class="unaerp-logo">
+      <img src="img/unaerp-logo.png" alt="UNAERP Logo" class="unaerp-logo">
       <h1>UNAERP – Incoming Student Mobility Form<br>Formulário de Mobilidade Alunos Internacionais</h1>
     </header>
 
@@ -250,6 +250,7 @@
       <!-- Section 6 – Required Documents -->
       <section>
         <h2>Required Documents / Documentos Necessários</h2>
+
         <label>Academic Transcript / Histórico Escolar (PDF)</label>
         <input type="file" id="academicTranscript" name="academicTranscript" accept=".pdf" required>
 
@@ -264,6 +265,24 @@
 
         <label>Passport Copy / Cópia do Passaporte (PDF)</label>
         <input type="file" id="passportCopy" name="passportCopy" accept=".pdf" required>
+
+        <label>Signed UNAERP Learning Agreement (PDF)</label>
+        <input type="file" id="learningAgreement" name="learningAgreement" accept=".pdf" required>
+
+        <p style="margin-top: 10px; font-size: 0.95em; color: #333;">
+          Please download the 
+          <a href="./docs/UNAERP_Learning_Agreement.docx" target="_blank">UNAERP Learning Agreement</a>,
+          complete it with your personal information and the courses you wish to attend at UNAERP, 
+          and ensure it is duly signed by both you and your institution’s coordinators.
+        </p>
+
+        <p style="font-size: 0.95em; color: #333;">
+          You can find the list of courses 
+          <a href="https://unaerp.br/cursos/graduacao-presencial" target="_blank">here</a>. 
+          Please note that you should click on <strong>“Matriz Curricular”</strong> to view the courses. 
+          If you would like to receive the syllabus for any specific course, please contact us at 
+          <a href="mailto:intercambio@unaerp.br">intercambio@unaerp.br</a>.
+        </p>
       </section>
 
       <!-- Section 7 – Agreements -->
