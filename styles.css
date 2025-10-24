@@ -1,7 +1,7 @@
 /* --- Layout geral --- */
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom right, #b3e0ff, #99ccff);
+  background: linear-gradient(to bottom right, #004999, #003366);
   margin: 0;
   display: flex;
   justify-content: center;
@@ -9,7 +9,6 @@ body {
   min-height: 100vh;
   padding: 20px;
 }
-
 /* --- Container do formulário --- */
 .container {
   background: #ffffff;
@@ -131,6 +130,7 @@ button:hover {
     max-width: 100%;
   }
 }
+
 
 
 
