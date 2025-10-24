@@ -65,12 +65,14 @@ button:hover {
 }
 .unaerp-logo {
   display: block;
-  margin: 0 auto 20px auto;
-  width: 200px;
+  margin-bottom: 20px;
+  width: 200px;       /* ajuste o tamanho se quiser menor/maior */
   height: auto;
+  float: left;        /* alinha à esquerda */
 }
 .hidden { display: none; }
 @media (max-width: 600px) {
   .container { margin: 20px; padding: 25px; }
 }
+
 
