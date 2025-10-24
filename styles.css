@@ -20,7 +20,7 @@ body {
 h1 {
   text-align: center;
   color: #003366;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 section { margin-bottom: 40px; }
 h2 {
@@ -80,6 +80,7 @@ h1 {
 @media (max-width: 600px) {
   .container { margin: 20px; padding: 25px; }
 }
+
 
 
 
