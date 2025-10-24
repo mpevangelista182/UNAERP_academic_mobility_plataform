@@ -4,40 +4,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const otherPeriodField = document.getElementById("otherPeriodField");
   const courseSelect = document.getElementById("courseSelect");
   const otherCourseField = document.getElementById("otherCourseField");
-
   const otherLanguageName = document.getElementById("otherLanguageName");
   const otherLanguageLevelField = document.getElementById("otherLanguageLevelField");
 
-  // Show Other Period Field
   if (periodSelect) {
     periodSelect.addEventListener("change", () => {
-      if (periodSelect.value.includes("Other")) {
-        otherPeriodField.classList.remove("hidden");
-      } else {
-        otherPeriodField.classList.add("hidden");
-      }
+      otherPeriodField.classList.toggle("hidden", !periodSelect.value.includes("Other"));
     });
   }
 
-  // Show Other Course Field
   if (courseSelect) {
     courseSelect.addEventListener("change", () => {
-      if (courseSelect.value.includes("Other")) {
-        otherCourseField.classList.remove("hidden");
-      } else {
-        otherCourseField.classList.add("hidden");
-      }
+      otherCourseField.classList.toggle("hidden", !courseSelect.value.includes("Other"));
     });
   }
 
-  // Show Other Language Level when user types a language
   if (otherLanguageName) {
     otherLanguageName.addEventListener("input", () => {
-      if (otherLanguageName.value.trim() !== "") {
-        otherLanguageLevelField.classList.remove("hidden");
-      } else {
-        otherLanguageLevelField.classList.add("hidden");
-      }
+      otherLanguageLevelField.classList.toggle("hidden", otherLanguageName.value.trim() === "");
     });
   }
 
