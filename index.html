@@ -8,12 +8,13 @@
 </head>
 <body>
   <div class="container">
+    <!-- Cabeçalho com logo e título -->
+    <header class="page-header">
+      <img src="./imgs/unaerp-logo.png" alt="UNAERP Logo" class="unaerp-logo">
+      <h1>UNAERP – Incoming Student Mobility Form<br>Formulário de Mobilidade Alunos Internacionais</h1>
+    </header>
+
     <form id="mobilityForm" enctype="multipart/form-data">
-<header class="page-header">
-  <img src="img/unaerp-logo.png" alt="UNAERP Logo" class="unaerp-logo">
-  <h1>UNAERP – Incoming Student Mobility Form<br>Formulário de Mobilidade Alunos Internacionais</h1>
-</header>
-      
 
       <!-- Section 1 – Introduction -->
       <section>
@@ -23,7 +24,7 @@
           Por gentileza, pedimos para que todos leiam o 
           <a href="https://unaerp.br/doclink/unaerp-application-guide-2026-2027/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1bmFlcnAtYXBwbGljYXRpb24tZ3VpZGUtMjAyNi0yMDI3IiwiaWF0IjoxNzU2NDc5MDc5LCJleHAiOjE3NTY1NjU0Nzl9.D95mn_BSK4iHqGQ3cPKnw6ImSu7XEzYUNFzFFa-eIE4" target="_blank">
             Manual de Candidatura</a> 
-          antes de preencher este formulário, disponível clicando aqui. Obrigado!
+          antes de preencher este formulário. Obrigado!
         </p>
 
         <p style="text-align: center;">•</p>
@@ -39,7 +40,6 @@
       <!-- Section 2 – Personal Information -->
       <section>
         <h2>Personal Information / Informações Pessoais</h2>
-
         <label>Full Name / Nome Completo</label>
         <input type="text" name="fullName" required>
 
@@ -72,7 +72,7 @@
         <input type="text" name="nationality" required>
 
         <label>Country / País</label>
-        <input type="text" name="country" placeholder="e.g. France / França" required>
+        <input type="text" name="country" required>
 
         <label>State / Province / Estado / Província</label>
         <input type="text" name="state">
@@ -93,7 +93,6 @@
       <!-- Section 3 – Academic Information -->
       <section>
         <h2>Academic Information / Informações Acadêmicas</h2>
-
         <label>Home Institution / Instituição de Origem</label>
         <input type="text" name="institution" required>
 
@@ -195,7 +194,6 @@
       <!-- Section 5 – Study at UNAERP -->
       <section>
         <h2>Study at UNAERP / Estudo na UNAERP</h2>
-
         <label>Study Period / Período de Estudo</label>
         <select id="period" name="period" required>
           <option value="">Select / Selecione</option>
