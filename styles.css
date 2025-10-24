@@ -70,9 +70,16 @@ button:hover {
   height: auto;
   float: left;        /* alinha à esquerda */
 }
+
+h1 {
+  text-align: left;
+  color: #003366;
+  margin: 0 0 30px 220px; /* empurra o título para a direita do logo */
+
 .hidden { display: none; }
 @media (max-width: 600px) {
   .container { margin: 20px; padding: 25px; }
 }
+
 
 
