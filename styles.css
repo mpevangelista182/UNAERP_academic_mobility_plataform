@@ -63,7 +63,14 @@ button {
 button:hover {
   background-color: #004999;
 }
+.unaerp-logo {
+  display: block;
+  margin: 0 auto 20px auto;
+  width: 200px;
+  height: auto;
+}
 .hidden { display: none; }
 @media (max-width: 600px) {
   .container { margin: 20px; padding: 25px; }
 }
+
