@@ -8,6 +8,7 @@ body {
   min-height: 100vh;
   padding: 20px;
 }
+
 .container {
   background: #ffffff;
   padding: 40px;
@@ -17,25 +18,31 @@ body {
   width: 100%;
   max-width: 800px;
 }
-h1 {
-  text-align: center;
-  color: #003366;
-  margin-bottom: 20px;
+
+section {
+  margin-bottom: 40px;
 }
-section { margin-bottom: 40px; }
+
 h2 {
   color: #004999;
   border-bottom: 2px solid #004999;
   padding-bottom: 5px;
   margin-bottom: 15px;
 }
+
 label {
   display: block;
   font-weight: bold;
   margin-top: 15px;
   color: #222;
 }
-input, select, textarea {
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
@@ -44,10 +51,16 @@ input, select, textarea {
   font-size: 1em;
   box-sizing: border-box;
 }
+
 textarea {
   resize: vertical;
   height: 100px;
 }
+
+input[type="file"] {
+  margin-top: 5px;
+}
+
 button {
   display: block;
   width: 100%;
@@ -60,47 +73,37 @@ button {
   cursor: pointer;
   transition: 0.3s ease;
 }
+
 button:hover {
   background-color: #004999;
 }
-.unaerp-logo {
-  display: block;
-  margin-bottom: 20px;
-  width: 200px;       /* ajuste o tamanho se quiser menor/maior */
-  height: auto;
-  float: left;        /* alinha à esquerda */
+
+.hidden {
+  display: none;
 }
 
-h1 {
-  text-align: left;
-  color: #003366;
-  margin: 0 0 30px 220px; /* empurra o título para a direita do logo */
-
-.hidden { display: none; }
-@media (max-width: 600px) {
-  .container { margin: 20px; padding: 25px; }
-}
 /* --- Header layout --- */
 .page-header {
   display: flex;
   align-items: center;
-  gap: 20px;             /* espaço entre logo e título */
+  gap: 20px;
   margin-bottom: 30px;
 }
 
 /* --- Logo --- */
 .unaerp-logo {
-  width: 150px;          /* tamanho equilibrado */
+  width: 150px;
   height: auto;
-  flex-shrink: 0;        /* evita distorção */
+  flex-shrink: 0;
 }
 
 /* --- Title --- */
 .page-header h1 {
-  font-size: 1.8em;      /* proporcional ao logo */
+  font-size: 1.8em;
   color: #003366;
   line-height: 1.2;
   margin: 0;
+  text-align: left;
 }
 
 /* --- Responsividade --- */
@@ -109,15 +112,16 @@ h1 {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .unaerp-logo {
     width: 120px;
     margin-bottom: 10px;
   }
+
   .page-header h1 {
     font-size: 1.4em;
   }
 }
-
 
 
 
