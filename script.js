@@ -2,11 +2,24 @@
 // Handles dynamic form behavior, validation, and submission to Google Apps Script
 
 document.addEventListener("DOMContentLoaded", function () {
+  // Garantir que o formulário e o botão existam
+  const form = document.getElementById("mobilityForm");
+  const submitBtn = document.getElementById("submitBtn");
+
+  if (!form) {
+    console.error("❌ Formulário com id='mobilityForm' não encontrado.");
+    return;
+  }
+  if (!submitBtn) {
+    console.error("❌ Botão de envio com id='submitBtn' não encontrado.");
+    return;
+  }
+
   // === LANGUAGE FIELD CONTROL ===
   const otherLanguageName = document.getElementById("otherLanguageName");
   const otherLanguageLevelField = document.getElementById("otherLanguageLevelField");
 
-  otherLanguageName.addEventListener("input", () => {
+  otherLanguageName?.addEventListener("input", () => {
     const hasText = otherLanguageName.value.trim().length > 0;
     otherLanguageLevelField.classList.toggle("hidden", !hasText);
   });
@@ -15,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const periodSelect = document.getElementById("period");
   const otherPeriodField = document.getElementById("otherPeriodField");
 
-  periodSelect.addEventListener("change", () => {
+  periodSelect?.addEventListener("change", () => {
     otherPeriodField.classList.toggle("hidden", periodSelect.value !== "Other / Outro");
   });
 
@@ -23,16 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const courseSelect = document.getElementById("courseSelect");
   const otherCourseField = document.getElementById("otherCourseField");
 
-  courseSelect.addEventListener("change", () => {
+  courseSelect?.addEventListener("change", () => {
     otherCourseField.classList.toggle("hidden", courseSelect.value !== "Other / Outro");
   });
 
   // === FORM SUBMISSION HANDLER ===
-  const form = document.getElementById("mobilityForm");
-  const submitBtn = document.getElementById("submitBtn");
-
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
+
+    console.log("📤 Submitting form...");
 
     // --- Validation for required file uploads ---
     const requiredFiles = [
@@ -43,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
       { id: "passportCopy", label: "Passport Copy" }
     ];
 
-    const missingFiles = requiredFiles.filter(f => !document.getElementById(f.id).files.length);
+    const missingFiles = requiredFiles.filter(f => !document.getElementById(f.id)?.files.length);
 
     if (missingFiles.length > 0) {
       alert(
@@ -54,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // --- Disable button during submission ---
+    console.log("🔒 Disabling submit button...");
     submitBtn.disabled = true;
     submitBtn.textContent = "Submitting / Enviando...";
 
@@ -84,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const payload = JSON.stringify({ fields, files });
 
       // --- Send to Google Apps Script ---
+      console.log("🚀 Sending data to Google Apps Script...");
       const response = await fetch(form.action, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -91,18 +105,19 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       const resultText = await response.text();
+      console.log("📬 Response:", resultText);
 
       if (response.ok) {
         alert("✅ Thank you! Your application form has been successfully submitted.\n\nObrigado! Seu formulário foi enviado com sucesso.");
         form.reset();
-        otherLanguageLevelField.classList.add("hidden");
-        otherPeriodField.classList.add("hidden");
-        otherCourseField.classList.add("hidden");
+        otherLanguageLevelField?.classList.add("hidden");
+        otherPeriodField?.classList.add("hidden");
+        otherCourseField?.classList.add("hidden");
       } else {
         alert("⚠️ An error occurred while submitting your form:\n\n" + resultText);
       }
     } catch (error) {
-      console.error("Submission error:", error);
+      console.error("❌ Submission error:", error);
       alert("❌ Error sending form. Please try again or contact the International Office.");
     } finally {
       submitBtn.disabled = false;
