@@ -1,70 +1,59 @@
-// script.js — versão completa (converte arquivos para base64 e submete via iframe)
-// Requisitos no index.html:
-//  - <form id="mobilityForm" action=".../exec" method="POST" enctype="multipart/form-data" target="hidden_iframe">
-//  - <button id="submitBtn" type="submit">Submit / Enviar</button>
-//  - <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
+// script.js — validação de email, arquivos obrigatórios e envio via fetch para Apps Script
 document.addEventListener("DOMContentLoaded", function () {
-  // --- Elementos principais ---
   const form = document.getElementById("mobilityForm");
   const submitBtn = document.getElementById("submitBtn");
-  const iframe = document.getElementById("hidden_iframe");
 
-  if (!form || !submitBtn || !iframe) {
-    console.error("❌ Elementos essenciais (form, submitBtn, hidden_iframe) não encontrados no DOM.");
-    return;
-  }
-
-  // --- Campos dinâmicos (mantém comportamento anterior) ---
+  // Campos dinâmicos (mesma lógica do seu original)
   const otherLanguageName = document.getElementById("otherLanguageName");
   const otherLanguageLevelField = document.getElementById("otherLanguageLevelField");
-  otherLanguageName?.addEventListener("input", () => {
-    otherLanguageLevelField?.classList.toggle("hidden", !otherLanguageName.value.trim().length);
-  });
-
-  const periodSelect = document.getElementById("period");
-  const otherPeriodField = document.getElementById("otherPeriodField");
-  periodSelect?.addEventListener("change", () => {
-    otherPeriodField?.classList.toggle("hidden", periodSelect.value !== "Other / Outro");
-  });
-
-  const courseSelect = document.getElementById("courseSelect");
-  const otherCourseField = document.getElementById("otherCourseField");
-  courseSelect?.addEventListener("change", () => {
-    otherCourseField?.classList.toggle("hidden", courseSelect.value !== "Other / Outro");
-  });
-
-  // --- Helper: converte File -> base64 (Promise) ---
-  function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        // reader.result = "data:<mime>;base64,<base64data>"
-        const parts = reader.result.split(",");
-        resolve(parts[1]); // retorna somente a parte base64
-      };
-      reader.onerror = (err) => reject(err);
-      reader.readAsDataURL(file);
+  if (otherLanguageName) {
+    otherLanguageName.addEventListener("input", () => {
+      otherLanguageLevelField.classList.toggle("hidden", !otherLanguageName.value.trim().length);
     });
   }
 
-  // --- Ao submeter o form ---
-  form.addEventListener("submit", async function (event) {
-    event.preventDefault(); // vamos controlar o submit manualmente
+  const periodSelect = document.getElementById("period");
+  const otherPeriodField = document.getElementById("otherPeriodField");
+  if (periodSelect) {
+    periodSelect.addEventListener("change", () => {
+      otherPeriodField.classList.toggle("hidden", periodSelect.value !== "Other / Outro");
+    });
+  }
 
-    // Validação básica de e-mail (opcional)
+  const courseSelect = document.getElementById("courseSelect");
+  const otherCourseField = document.getElementById("otherCourseField");
+  if (courseSelect) {
+    courseSelect.addEventListener("change", () => {
+      otherCourseField.classList.toggle("hidden", courseSelect.value !== "Other / Outro");
+    });
+  }
+
+  // Validação e envio
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // vamos controlar o envio manualmente
+
+    // Desativar o botão enquanto processa
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Enviando...";
+
+    // 1) Validar e-mail (presença + formato)
     const emailField = document.getElementById("email");
-    if (emailField) {
-      const email = emailField.value.trim();
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        alert("Por favor, insira um e-mail válido.");
-        emailField.focus();
-        return;
-      }
+    const emailValue = emailField ? emailField.value.trim() : "";
+    if (!emailValue) {
+      alert("Por favor informe um e-mail antes de enviar.");
+      emailField.focus();
+      resetButton();
+      return;
+    }
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailValue)) {
+      alert("Por favor informe um endereço de e-mail válido.");
+      emailField.focus();
+      resetButton();
+      return;
     }
 
-    // Lista de arquivos obrigatórios (mesma ordem do form)
+    // 2) Verificar arquivos obrigatórios (IDs correspondem ao index.html acima)
     const requiredFiles = [
       { id: "academicTranscript", label: "Academic Transcript" },
       { id: "cv", label: "Curriculum Vitae" },
@@ -73,76 +62,65 @@ document.addEventListener("DOMContentLoaded", function () {
       { id: "passportCopy", label: "Passport Copy" }
     ];
 
-    // Verifica se todos os requiredFiles estão presentes
-    const missing = requiredFiles.filter(f => {
-      const el = document.getElementById(f.id);
-      return !(el && el.files && el.files.length);
+    const missingFiles = [];
+    requiredFiles.forEach(f => {
+      const input = document.getElementById(f.id);
+      if (!input || !input.files || input.files.length === 0) {
+        missingFiles.push(f.label);
+      }
     });
-    if (missing.length > 0) {
-      alert("Por favor, envie os arquivos obrigatórios:\n\n" + missing.map(m => m.label).join("\n"));
+
+    if (missingFiles.length > 0) {
+      alert("Por favor faça upload dos seguintes arquivos obrigatórios:\n\n" + missingFiles.join("\n"));
+      resetButton();
       return;
     }
 
-    // Desativa botão
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Sending... / Enviando...";
+    // 3) Preparar FormData e enviar via fetch para o URL do form.action
+    const formData = new FormData(form);
 
-    try {
-      // 1) Recolhe todos os campos de texto/select/textarea (exceto arquivos)
-      const formData = new FormData(form);
-      const fields = {};
-      formData.forEach((value, key) => {
-        // FormData coloca File para inputs file; ignoramos aqui
-        if (value instanceof File) return;
-        fields[key] = value;
+    // Observação: o comportamento no servidor depende do Apps Script.
+    // O Apps Script precisa estar preparado para receber multipart/form-data (ou aceitar apenas text fields).
+    // Se você ainda não publicou o Web App, substitua a URL no atributo action do form antes de testar.
+    const url = form.action;
+    if (!url || !url.startsWith("https://script.google.com/")) {
+      alert("URL do Apps Script inválida. Verifique o atributo action no <form> e cole o Web App URL correto.");
+      resetButton();
+      return;
+    }
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+      mode: "cors",
+      credentials: "omit"
+    })
+      .then(response => {
+        // Alguns Apps Script retornam texto simples; outros retornam 200 com mensagem.
+        if (response.ok) {
+          return response.text().then(text => ({ ok: true, text }));
+        } else {
+          return response.text().then(text => Promise.reject({ status: response.status, text }));
+        }
+      })
+      .then(result => {
+        alert("✅ Thank you! Your application has been successfully submitted! / Obrigado! Seu formulário foi enviado com sucesso!");
+        form.reset();
+        // esconder campos dinâmicos após reset
+        if (otherLanguageLevelField) otherLanguageLevelField.classList.add("hidden");
+        if (otherPeriodField) otherPeriodField.classList.add("hidden");
+        if (otherCourseField) otherCourseField.classList.add("hidden");
+      })
+      .catch(err => {
+        console.error("Erro ao enviar o formulário:", err);
+        const message = err && err.text ? err.text : "Erro desconhecido ao tentar enviar. Confira o Console do navegador.";
+        alert("❌ Falha no envio: " + message);
+      })
+      .finally(() => {
+        resetButton();
       });
 
-      // 2) Lê e converte arquivos obrigatórios (em base64)
-      const filesPayload = {};
-      for (const f of requiredFiles) {
-        const input = document.getElementById(f.id);
-        if (input && input.files && input.files.length > 0) {
-          const file = input.files[0];
-          const base64 = await fileToBase64(file);
-          filesPayload[f.id] = {
-            filename: file.name,
-            mimeType: file.type || "application/octet-stream",
-            base64: base64
-          };
-        }
-      }
-
-      // 3) Monta o payload JSON
-      const payload = { fields, files: filesPayload };
-
-      // 4) Coloca o JSON no campo hidden 'json' (cria se não existir)
-      let jsonInput = form.querySelector('input[name="json"]');
-      if (!jsonInput) {
-        jsonInput = document.createElement("input");
-        jsonInput.type = "hidden";
-        jsonInput.name = "json";
-        form.appendChild(jsonInput);
-      }
-      jsonInput.value = JSON.stringify(payload);
-
-      // 5) Submete o form para o iframe (sem fetch => evita CORS)
-      // Observação: estamos enviando multipart/form-data com um campo "json" contendo o JSON.
-      form.submit();
-
-      // 6) Quando o iframe carregar a resposta do Apps Script, tratamos o feedback
-      iframe.onload = function () {
-        // A resposta do Apps Script geralmente será "Success" ou "Error: ...".
-        // Não conseguimos ler o conteúdo do iframe se for cross-origin, mas se o Apps Script
-        // retornar uma página simples, o onload será disparado e podemos mostrar sucesso.
-        alert("✅ Form successfully submitted! / Formulário enviado com sucesso!");
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Submit / Enviar";
-        form.reset();
-      };
-
-    } catch (err) {
-      console.error("Submission error:", err);
-      alert("❌ Erro ao enviar o formulário. Verifique o console para detalhes.");
+    function resetButton() {
       submitBtn.disabled = false;
       submitBtn.textContent = "Submit / Enviar";
     }
