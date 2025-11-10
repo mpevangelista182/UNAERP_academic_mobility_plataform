@@ -1,132 +1,106 @@
-/* --- Layout geral --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  --blue-900: #003366;
+  --blue-800: #004999;
+  --blue-700: #0066cc;
+  --muted: #6b7280;
+  --bg-grad: linear-gradient(135deg, rgba(0,73,153,0.12), rgba(0,102,204,0.08));
+  --card-bg: #ffffff;
+  --radius: 14px;
+  --glass: rgba(255,255,255,0.7);
+  --input-border: #d1d5db;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --transition: 280ms cubic-bezier(.2,.9,.3,1);
+}
+
+/* --- Page background --- */
+html,body{
+  height: 100%;
+}
 body {
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom right, #004999, #003366);
   margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #eaf4ff 0%, #f7fbff 60%), radial-gradient(800px 400px at 10% 10%, rgba(0,73,153,0.03), transparent);
+  -webkit-font-smoothing:antialiased;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-height: 100vh;
-  padding: 20px;
+  padding: 28px;
 }
-/* --- Container do formulário --- */
+
+/* --- Container card --- */
 .container {
-  background: #ffffff;
-  padding: 40px;
-  margin: 40px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   width: 100%;
-  max-width: 800px;
+  max-width: 920px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+  padding: 36px 40px;
+  box-sizing: border-box;
+  border: 1px solid rgba(2,6,23,0.04);
+  overflow: hidden;
 }
 
-/* --- Seções --- */
+/* Header */
+.page-header{
+  display:flex;
+  gap:20px;
+  align-items:center;
+  margin-bottom: 22px;
+}
+.unaerp-logo{
+  width: 120px;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 8px;
+  padding: 6px;
+  background: linear-gradient(180deg, rgba(0,102,204,0.04), transparent);
+}
+.page-header h1{
+  margin: 0;
+  color: var(--blue-900);
+  font-size: 1.25rem;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+/* Section styling */
 section {
-  margin-bottom: 40px;
+  padding: 18px 0;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  background: transparent;
 }
 
-h2 {
-  color: #004999;
-  border-bottom: 2px solid #004999;
-  padding-bottom: 5px;
-  margin-bottom: 15px;
+/* section title */
+h2{
+  font-size: 1rem;
+  color: var(--blue-800);
+  margin: 0 0 12px 0;
+  font-weight: 600;
+  display: inline-block;
+  padding-bottom: 6px;
+  border-bottom: 2px solid rgba(0,73,153,0.06);
 }
 
-/* --- Labels e Inputs --- */
+/* labels & inputs - modern */
 label {
-  display: block;
-  font-weight: bold;
-  margin-top: 15px;
-  color: #222;
+  display:block;
+  font-weight:600;
+  color:#0f172a;
+  margin-top:12px;
+  margin-bottom:6px;
+  font-size:0.95rem;
 }
 
+/* inputs, selects, textarea */
 input[type="text"],
 input[type="email"],
 input[type="date"],
 input[type="number"],
 select,
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1em;
-  box-sizing: border-box;
-}
+textarea,
+input
 
-textarea {
-  resize: vertical;
-  height: 100px;
-}
-
-input[type="file"] {
-  margin-top: 5px;
-}
-
-/* --- Botão de envio --- */
-button {
-  display: block;
-  width: 100%;
-  background-color: #0066cc;
-  color: white;
-  padding: 15px;
-  font-size: 1.1em;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-button:hover {
-  background-color: #004999;
-}
-
-/* --- Classes utilitárias --- */
-.hidden {
-  display: none;
-}
-
-/* --- Cabeçalho (logo + título) --- */
-.page-header {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-/* --- Logo --- */
-.unaerp-logo {
-  width: 150px;          /* tamanho ideal em relação ao texto */
-  height: auto;
-  flex-shrink: 0;
-}
-
-/* --- Título --- */
-.page-header h1 {
-  font-size: 1.5em;      /* ajustado para alinhar com o logo */
-  color: #003366;
-  line-height: 1.2;
-  margin: 0;
-  text-align: left;
-  max-width: 600px;      /* controla a largura e evita quebra indesejada */
-  white-space: normal;   /* permite quebra de linha controlada */
-}
-
-/* --- Responsividade --- */
-@media (max-width: 600px) {
-  .page-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .unaerp-logo {
-    width: 120px;
-    margin-bottom: 10px;
-  }
-
-  .page-header h1 {
-    font-size: 1.4em;
-    max-width: 100%;
-  }
-}
