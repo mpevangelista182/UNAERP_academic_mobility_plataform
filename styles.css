@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 
 /* --- Layout geral --- */
 body {
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: 'Ubuntu', Arial, sans-serif;
   background: linear-gradient(to bottom right, #004999, #003366);
   margin: 0;
   display: flex;
@@ -132,4 +134,5 @@ button:hover {
     max-width: 100%;
   }
 }
+
 
