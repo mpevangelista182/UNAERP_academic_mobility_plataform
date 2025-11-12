@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("mobilityForm");
+  const form = document.getElementById("IncomingForm");
   const submitBtn = document.getElementById("submitBtn");
 
   const showError = (field, message) => {
@@ -77,3 +77,4 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 });
+
