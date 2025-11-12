@@ -6,53 +6,67 @@
   <title>UNAERP Incoming Student Form</title>
   <link rel="icon" type="image/x-icon" href="./imgs/favicon.ico">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    .error-message {
-      color: #d32f2f;
-      font-size: 0.85rem;
-      margin-top: 2px;
-    }
-    input:invalid, select:invalid, textarea:invalid {
-      border-color: #d32f2f;
-    }
-    input:valid, select:valid, textarea:valid {
-      border-color: #2e7d32;
-    }
-  </style>
 </head>
 <body>
-  <div class="container">
+   <div class="container">
+    <!-- Header with logo and title -->
     <header class="page-header">
       <img src="imgs/unaerp-logo.png" alt="UNAERP Logo" class="unaerp-logo">
       <h1>UNAERP – Incoming Student Mobility Form<br>Formulário de Mobilidade Alunos Internacionais</h1>
     </header>
 
-    <form id="mobilityForm" action="https://script.google.com/macros/s/AKfycbz5ohJ8YSjvExPOvVMWktaew7rZ0zjCEo9VXBFbaeGM_WiA-9vl2EMkmEwmIjhk8xpR/exec" method="POST" novalidate>
+<form id="mobilityForm" action="https://script.google.com/macros/s/AKfycbz5ohJ8YSjvExPOvVMWktaew7rZ0zjCEo9VXBFbaeGM_WiA-9vl2EMkmEwmIjhk8xpR/exec" method="POST">
+  <!-- Campos do formulário -->
+
+  <!-- Section 1 – Introduction -->
+<section>
+  <h2>UNAERP, Brazil - Incoming Form 2026-2027</h2>
+
+  <p>
+    Olá, estudante! Agradecemos o seu interesse em estudar na Unaerp, campus Ribeirão Preto, Brasil. 
+    <br>
+    Por gentileza, pedimos para que todos leiam o 
+    <a href="https://orxi1y2fdw0uyefy.public.blob.vercel-storage.com/UNAERP%20-%20Application%20Guide%202026-2027.pdf" target="_blank">
+      Manual de Candidatura</a> 
+    antes de preencher este formulário. Obrigado!
+  </p>
+
+  <p style="text-align: center;">•</p>
+
+  <p>
+    Dear International Student, we appreciate your interest in studying at Unaerp in Ribeirão Preto city, Brazil. 
+    Please, before completing this form, make sure you have read the 
+    <a href="https://orxi1y2fdw0uyefy.public.blob.vercel-storage.com/UNAERP%20-%20Application%20Guide%202026-2027.pdf" target="_blank">
+      Application Guide</a>. Thank you!
+  </p>
+</section>
+
+      <!-- Section 2 – Personal Information -->
       <section>
         <h2>Personal Information / Informações Pessoais</h2>
+        <label>Full Name / Nome Completo</label>
+        <input type="text" name="fullName" required>
 
-        <label for="fullName">Full Name / Nome Completo</label>
-        <input type="text" id="fullName" name="fullName" required maxlength="100">
-        <div class="error-message" id="error-fullName"></div>
-
-        <label for="email">Email Address</label>
+        <label>Email Address</label>
         <input type="email" id="email" name="email" required>
-        <div class="error-message" id="error-email"></div>
 
-        <label for="passportNumber">Passport Number / Número do Passaporte</label>
-        <input type="text" id="passportNumber" name="passportNumber" required pattern="[A-Za-z0-9]{4,20}">
-        <div class="error-message" id="error-passportNumber"></div>
+        <label>Passport Number / Número do Passaporte</label>
+        <input type="text" name="passportNumber" required>
 
-        <label for="phone">Phone Number / Telefone</label>
-        <input type="tel" id="phone" name="phone" required pattern="^[0-9()+\\-\\s]{6,20}$">
-        <div class="error-message" id="error-phone"></div>
+        <label>Phone Number / Telefone</label>
+        <input type="text" name="phone" required>
 
-        <label for="dob">Date of Birth / Data de Nascimento</label>
-        <input type="date" id="dob" name="dob" required>
-        <div class="error-message" id="error-dob"></div>
+        <label>Mother’s Name / Nome da Mãe</label>
+        <input type="text" name="motherName" required>
 
-        <label for="gender">Gender / Gênero</label>
-        <select id="gender" name="gender" required>
+        <label>Father’s Name / Nome do Pai</label>
+        <input type="text" name="fatherName" required>
+
+        <label>Date of Birth / Data de Nascimento</label>
+        <input type="date" name="dob" required>
+
+        <label>Gender / Gênero</label>
+        <select name="gender" required>
           <option value="">Select / Selecione</option>
           <option>Female / Feminino</option>
           <option>Male / Masculino</option>
@@ -60,25 +74,297 @@
           <option>Prefer not to say / Prefiro não informar</option>
           <option>Other / Outro</option>
         </select>
-        <div class="error-message" id="error-gender"></div>
 
-        <label for="nationality">Nationality / Nacionalidade</label>
-        <input type="text" id="nationality" name="nationality" required>
-        <div class="error-message" id="error-nationality"></div>
+        <label>Nationality / Nacionalidade</label>
+        <input type="text" name="nationality" required>
 
-        <label for="country">Country / País</label>
-        <input type="text" id="country" name="country" required>
-        <div class="error-message" id="error-country"></div>
+        <label>Country / País</label>
+        <input type="text" name="country" required>
 
-        <label for="zip">ZIP / Código Postal</label>
-        <input type="text" id="zip" name="zip" required pattern="\\d{4,10}">
-        <div class="error-message" id="error-zip"></div>
+        <label>State / Province / Estado / Província</label>
+        <input type="text" name="state">
+
+        <label>City / Cidade</label>
+        <input type="text" name="city" required>
+
+        <label>Address / Endereço Residencial</label>
+        <input type="text" name="address" required>
+
+        <label>ZIP / Código Postal</label>
+        <input type="text" name="zip" required>
+
+        <label>Disability or medical condition / Deficiência ou condição médica</label>
+        <textarea name="disability"></textarea>
       </section>
 
-      <button type="submit" id="submitBtn">Submit / Enviar</button>
+      <!-- Section 3 – Academic Information -->
+      <section>
+        <h2>Academic Information / Informações Acadêmicas</h2>
+        <label>Home Institution / Instituição de Origem</label>
+        <input type="text" name="institution" required>
+
+        <label>Program of Study / Programa de Estudos</label>
+        <input type="text" name="program" required>
+
+        <label>Starting Year / Ano de Início</label>
+        <input type="text" name="startYear" required>
+
+        <label>Year of Conclusion / Ano de Conclusão</label>
+        <input type="text" name="endYear" required>
+
+        <label>Current Stage / Ano ou Semestre Atual</label>
+        <input type="text" name="stage" required>
+      </section>
+
+    <!-- Section 4 – Language Skills -->
+<section>
+  <h2>Language Skills / Habilidades Linguísticas</h2>
+
+  <label>Portuguese level / Nível de Português</label>
+  <select name="portuguese" required>
+    <option value="">Select / Selecione</option>
+    <option>No previous knowledge / Sem conhecimento prévio</option>
+    <option>Basic User / Usuário Básico (A1-A2)</option>
+    <option>Independent User / Usuário Independente (B1)</option>
+    <option>Independent User / Usuário Independente (B2)</option>
+    <option>Proficient User / Usuário Proficiente (C1)</option>
+    <option>Proficient User / Usuário Proficiente (C2)</option>
+    <option>Fluent / Fluente</option>
+    <option>Native Speaker / Nativo</option>
+  </select>
+
+  <label>English level / Nível de Inglês</label>
+  <select name="english" required>
+    <option value="">Select / Selecione</option>
+    <option>No previous knowledge / Sem conhecimento prévio</option>
+    <option>Basic User / Usuário Básico (A1-A2)</option>
+    <option>Independent User / Usuário Independente (B1)</option>
+    <option>Independent User / Usuário Independente (B2)</option>
+    <option>Proficient User / Usuário Proficiente (C1)</option>
+    <option>Proficient User / Usuário Proficiente (C2)</option>
+    <option>Fluent / Fluente</option>
+    <option>Native Speaker / Nativo</option>
+  </select>
+
+  <label>Spanish level / Nível de Espanhol</label>
+  <select name="spanish" required>
+    <option value="">Select / Selecione</option>
+    <option>No previous knowledge / Sem conhecimento prévio</option>
+    <option>Basic User / Usuário Básico (A1-A2)</option>
+    <option>Independent User / Usuário Independente (B1)</option>
+    <option>Independent User / Usuário Independente (B2)</option>
+    <option>Proficient User / Usuário Proficiente (C1)</option>
+    <option>Proficient User / Usuário Proficiente (C2)</option>
+    <option>Fluent / Fluente</option>
+    <option>Native Speaker / Nativo</option>
+  </select>
+
+  <label>French level / Nível de Francês</label>
+  <select name="french" required>
+    <option value="">Select / Selecione</option>
+    <option>No previous knowledge / Sem conhecimento prévio</option>
+    <option>Basic User / Usuário Básico (A1-A2)</option>
+    <option>Independent User / Usuário Independente (B1)</option>
+    <option>Independent User / Usuário Independente (B2)</option>
+    <option>Proficient User / Usuário Proficiente (C1)</option>
+    <option>Proficient User / Usuário Proficiente (C2)</option>
+    <option>Fluent / Fluente</option>
+    <option>Native Speaker / Nativo</option>
+  </select>
+
+  <label>Italian level / Nível de Italiano</label>
+  <select name="italian" required>
+        <option value="">Select / Selecione</option>
+    <option>No previous knowledge / Sem conhecimento prévio</option>
+    <option>Basic User / Usuário Básico (A1-A2)</option>
+    <option>Independent User / Usuário Independente (B1)</option>
+    <option>Independent User / Usuário Independente (B2)</option>
+    <option>Proficient User / Usuário Proficiente (C1)</option>
+    <option>Proficient User / Usuário Proficiente (C2)</option>
+    <option>Fluent / Fluente</option>
+    <option>Native Speaker / Nativo</option>
+  </select>
+
+  <label>Other Language / Outro Idioma</label>
+  <input type="text" id="otherLanguageName" name="otherLanguageName" placeholder="Type the language / Digite o idioma">
+
+  <div id="otherLanguageLevelField" class="hidden">
+    <label>Other Language Level / Nível do Outro Idioma</label>
+    <select id="otherLanguageLevel" name="otherLanguageLevel">
+    <option value="">Select / Selecione</option>
+    <option>Basic User / Usuário Básico (A1-A2)</option>
+    <option>Independent User / Usuário Independente (B1)</option>
+    <option>Independent User / Usuário Independente (B2)</option>
+    <option>Proficient User / Usuário Proficiente (C1)</option>
+    <option>Proficient User / Usuário Proficiente (C2)</option>
+    <option>Fluent / Fluente</option>
+    <option>Native Speaker / Nativo</option>
+    </select>
+  </div>
+</section>
+
+
+      <!-- Section 5 – Study at UNAERP -->
+      <section>
+        <h2>Study at UNAERP / Estudo na UNAERP</h2>
+        <label>Study Period / Período de Estudo</label>
+        <select id="period" name="period" required>
+          <option value="">Select / Selecione</option>
+          <option>2026-1 (Feb–Jun)</option>
+          <option>2026-2 (Aug–Dec)</option>
+          <option>2027-1 (Feb–Jun)</option>
+          <option>Other / Outro</option>
+        </select>
+
+        <div id="otherPeriodField" class="hidden">
+          <label>Specify Other Period / Especifique Outro Período</label>
+          <input type="text" name="otherPeriod">
+        </div>
+
+        <label>Campus</label>
+        <select name="campus" required>
+          <option>Ribeirão Preto</option>
+          <option>Guarujá (Please note that our main Campus is Ribeirão Preto)</option>
+        </select>
+
+        <label>Course of Interest / Curso de Interesse</label>
+        <select id="courseSelect" name="course" required>
+          <option value="">Select / Selecione</option>
+          <option>Architecture and Urbanism / Arquitetura e Urbanismo</option>
+          <option>Business / Administração</option>
+          <option>Chemical Engineering / Engenharia Química</option>
+          <option>Civil Engineering / Engenharia Civil</option>
+          <option>Computer Engineering / Engenharia da Computação</option>
+          <option>Dentistry / Odontologia</option>
+          <option>International Relations / Relações Internacionais</option>
+          <option>Journalism / Jornalismo</option>
+          <option>Law / Direito</option>
+          <option>Medicine / Medicina</option>
+          <option>Nursing / Enfermagem</option>
+          <option>Nutrition / Nutrição</option>
+          <option>Pharmaceutical Sciences / Ciências Farmacêuticas</option>
+          <option>Physical Education / Educação Física</option>
+          <option>Physiotherapy / Fisioterapia</option>
+          <option>Psychology / Psicologia</option>
+          <option>Publicity and Advertising / Publicidade e Propaganda</option>
+          <option>Software Engineering / Engenharia de Software</option>
+          <option>Other / Outro</option>
+        </select>
+
+        <div id="otherCourseField" class="hidden">
+          <label>Specify Other Course / Especifique Outro Curso</label>
+          <input type="text" name="otherCourse">
+        </div>
+
+        <label>If applying for internship, research, etc. / Se aplicando para estágio, pesquisa, etc.</label>
+        <textarea name="exchangeType"></textarea>
+      </section>
+
+   <!-- Section 6 – Required Documents -->
+   <!-- Upload Documents Section -->
+      <section>
+        <h2>Documentos Necessários / Required Documents</h2>
+        <p>Envie os seguintes documentos em formato PDF. / Please upload the following documents in PDF format.</p>
+
+        <ol class="upload-list">
+          <li class="file-upload">
+            <label for="transcript">1. Histórico Escolar / Academic Transcript (PDF)</label>
+            <input type="file" id="transcript" name="transcript" accept=".pdf" required>
+            <span class="file-label">Nenhum arquivo selecionado</span>
+          </li>
+
+          <li class="file-upload">
+            <label for="cv">2. Curriculum Vitae (PDF)</label>
+            <input type="file" id="cv" name="cv" accept=".pdf" required>
+            <span class="file-label">Nenhum arquivo selecionado</span>
+          </li>
+
+          <li class="file-upload">
+            <label for="motivation">3. Carta de Motivação / Motivation Letter (PDF)</label>
+            <input type="file" id="motivation" name="motivation" accept=".pdf" required>
+            <span class="file-label">Nenhum arquivo selecionado</span>
+          </li>
+
+          <li class="file-upload">
+            <label for="recommendation">4. Carta de Recomendação de um Professor / Recommendation Letter from a Professor (PDF)</label>
+            <input type="file" id="recommendation" name="recommendation" accept=".pdf" required>
+            <span class="file-label">Nenhum arquivo selecionado</span>
+          </li>
+
+          <li class="file-upload">
+            <label for="passport">5. Cópia do Passaporte / Passport Copy (PDF)</label>
+            <input type="file" id="passport" name="passport" accept=".pdf" required>
+            <span class="file-label">Nenhum arquivo selecionado</span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Learning Agreement Section (moved to last, text intact) -->
+      <section>
+        <h2>Learning Agreement</h2>
+        <p>
+  O Learning Agreement deve ser devidamente preenchido e assinado por você e pelos coordenadores da sua instituição, e enviado para <strong>intercambio@unaerp.br</strong>.
+</p>
+<p>
+  The Learning Agreement must be properly completed and signed by you and your institution’s coordinators, and then sent to <strong>intercambio@unaerp.br</strong>.
+</p>
+        <p>
+          <a href="docs/UNAERP_Learning_Agreement.docx" target="_blank">
+            Download Learning Agreement Template (Word)
+          </a>
+          <br>
+           </p>
+      </section>
+
+<!-- Section 7 – Agreements -->
+<section>
+  <h2>Agreements / Termos</h2>
+
+  <label>
+    <input type="checkbox" required>
+    I am aware that the conditions for accepting and allowing foreigners into Brazil are subject to the requirements and guidelines of the Federal and State governments. Changes may occur without prior notice due to governmental, public health, or other reasons.
+    <br><br>
+    *<br>
+    <span style="font-weight: normal;">
+      Estou ciente de que as condições para aceite e vinda de estrangeiros ao Brasil estão condicionadas às exigências e orientações dos governos Federal e Estadual. 
+      Mudanças podem ocorrer sem aviso prévio por questões governamentais, de saúde pública ou outras.
+    </span>
+  </label>
+
+  <label>
+    <input type="checkbox" required>
+    If I attend courses taught in Portuguese, I confirm that I am aware that the courses are taught in Portuguese and confirm that I feel comfortable attending classes in Portuguese.
+    <br><br>
+    *<br>
+    <span style="font-weight: normal;">
+      Caso eu frequente disciplinas ministradas em português, eu confirmo estar ciente de que as disciplinas são ministradas em português e confirmo que me sinto confortável em frequentar aulas na língua portuguesa.
+    </span>
+  </label>
+
+  <label>
+    <input type="checkbox" required>
+    I hereby confirm that the information provided herein is accurate, correct, and complete and that the documents submitted along with this application form are genuine. 
+    I hereby give consent for my personal data included in my application to be processed for the purposes of this academic program, promoted and delivered by the University of Ribeirão Preto (UNAERP).
+    <br><br>
+    *<br>
+    <span style="font-weight: normal;">
+      Confirmo que as informações aqui fornecidas são precisas, corretas e completas e que os documentos enviados com este formulário de inscrição são genuínos. 
+      Dou consentimento para que os meus dados pessoais incluídos na minha candidatura sejam processados para efeitos deste programa acadêmico promovido e ministrado pela Universidade de Ribeirão Preto (UNAERP).
+    </span>
+  </label>
+</section>
+      <!-- Section 8 – Comments -->
+      <section>
+        <h2>Additional Comments / Comentários Adicionais</h2>
+        <textarea name="comments"></textarea>
+      </section>
+
+<button id="submitBtn" type="submit">Submit / Enviar</button>
     </form>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
+
+
+
