@@ -2,6 +2,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("IncomingForm");
   const submitBtn = document.getElementById("submitBtn");
 
+  const otherLangInput = document.getElementById("otherLanguageName");
+  const otherLangLevelField = document.getElementById("otherLanguageLevelField");
+
+  if (otherLangInput && otherLangLevelField) {
+    const toggleOtherLangLevel = () => {
+      const value = otherLangInput.value.trim();
+      if (value !== "") {
+        otherLangLevelField.classList.remove("hidden");
+      } else {
+        otherLangLevelField.classList.add("hidden");
+        const levelSelect = otherLangLevelField.querySelector("select");
+        if (levelSelect) levelSelect.value = "";
+      }
+    };
+    otherLangInput.addEventListener("input", toggleOtherLangLevel);
+    toggleOtherLangLevel(); // initialize on load
+  }
+
   const showError = (field, message) => {
     const errorElement = document.getElementById(`error-${field.id}`);
     if (errorElement) errorElement.textContent = message;
@@ -77,4 +95,5 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 });
+
 
