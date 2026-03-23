@@ -31,7 +31,7 @@ Allowing students to apply for mobility programs directly through a web interfac
 
 ## 🏗️ Project Structure
 
-unaerp-mobility-form/
+Formulario-Incoming-UNAERP
 │
 ├── index.html # Main HTML structure of the form
 ├── styles.css # CSS styling for layout and responsiveness
