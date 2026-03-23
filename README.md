@@ -26,7 +26,6 @@ Allowing students to apply for mobility programs directly through a web interfac
   - “Other / Outro” options reveal input fields dynamically.
   - Validation for required uploads and form completion.
 - 📱 Fully responsive design using pure HTML + CSS.
-- 🌐 Ready to deploy with **GitHub Pages**.
 
 ---
 
